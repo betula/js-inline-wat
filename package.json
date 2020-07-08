@@ -1,6 +1,6 @@
 {
   "name": "js-inline-wat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tool for bundling a WebAssembly .wat file into a .js library file.",
   "license": "MIT",
   "homepage": "https://github.com/betula/js-inline-wat",

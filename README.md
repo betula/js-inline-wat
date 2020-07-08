@@ -1,4 +1,4 @@
-## js-inline-wat
+## js-inline-wat [![npm version](https://img.shields.io/npm/v/js-inline-wat?style=flat-square)](https://www.npmjs.com/package/js-inline-wat)
 
 A tool for bundling a WebAssembly .wat file into a .js ES6 library file.
 
@@ -11,7 +11,7 @@ npm install -D js-inline-wat
 ### Usage
 
 ```
-$ inlinewat sample.wat [-o sample.wat.js] [-t fetch]
+$ inlinewat sample.wat [-o sample.wat.js] [-t decoded]
 ```
 
 In `package.json`
