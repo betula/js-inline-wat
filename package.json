@@ -1,12 +1,19 @@
 {
   "name": "js-inline-wat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool for bundling a WebAssembly .wat file into a .js library file.",
   "license": "MIT",
   "homepage": "https://github.com/betula/js-inline-wat",
   "bin": {
-    "inlinewat": "./cli.js"
+    "inlinewat": "cli.js"
   },
+  "main": "inlinewat.js",
+  "files": [
+    "templates",
+    "cli.js",
+    "template.js",
+    "inlinewat.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/betula/js-inline-wat"
@@ -22,7 +29,9 @@
   "dependencies": {
     "command-line-args": "5.1.1",
     "command-line-usage": "6.1.0",
-    "parcel-bundler": "1.12.4",
     "wabt": "1.0.17"
+  },
+  "devDependencies": {
+    "parcel-bundler": "1.12.4"
   }
 }

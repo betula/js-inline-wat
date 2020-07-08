@@ -18,7 +18,7 @@ In `package.json`
 
 ```json
 scripts: {
-    "inlinewat": "inlinewat wat/sample.wat -o build/sample.wat.js"
+    "inlinewat": "inlinewat wat/sample.wat -o build/sample.js"
 }
 ```
 
@@ -42,7 +42,7 @@ Each type outputs a different variant of JavaScript file
 Creates a JavaScript file with a default export function that can be used anywhere you could use `fetch()`. e.g.
 
 ```javascript
-import fetchSample from 'sample'; // sample.wat.js contains the bundled .wat
+import fetchSample from 'sample'; // sample.js contains the bundled .wat
 
 WebAssembly.instantiateStreaming(fetchSample)
     .then(obj => obj.instance.exports.exported_func());
@@ -55,7 +55,7 @@ Creates a JavaScript file with a default export byte array containing the decode
 **Note:** You'll probably want to use [`WebAssembly.instantiateStreaming()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiateStreaming) in most cases, as it is more efficient than `instantiate()`.
 
 ```javascript
-import decodedSample from 'sample'; // sample.wat.js contains the bundled .wat
+import decodedSample from 'sample'; // sample.js contains the bundled .wat
 
 WebAssembly.instantiate(decodedSample)
     .then(obj => obj.instance.exports.exported_func());
@@ -66,7 +66,7 @@ WebAssembly.instantiate(decodedSample)
 Creates a JavaScript file with a default export string value containing the base64 encoded .wat file
 
 ```javascript
-import encodedSample from 'sample'; // sample.wat.js contains the bundled .wat
+import encodedSample from 'sample'; // sample.js contains the bundled .wat
 
 // Decode the base64 string then compile...
 ```
