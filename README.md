@@ -1,34 +1,35 @@
-## js-inline-wasm
+## js-inline-wat
 
-A tool for bundling a WebAssembly .wasm file into a .js ES6 library file with async loading.
+A tool for bundling a WebAssembly .wat file into a .js ES6 library file.
 
 ### Installation
 
 ```
-npm install -D js-inline-wasm
+npm install -D js-inline-wat
 ```
 
 ### Usage
 
 ```
-$ inlinewasm sample.wasm [--output sample.js] [--type fetch]
+$ inlinewat sample.wat [-o sample.wat.js] [-t fetch]
 ```
 
 In `package.json`
 
 ```json
 scripts: {
-    "inlinewasm": "inlinewasm wasm/sample.wasm --output build/sample.js"
+    "inlinewat": "inlinewat wat/sample.wat -o build/sample.wat.js"
 }
 ```
 
 ### Options
 
-* --input file          The .wasm file to inline
+* --input file          The .wat file to inline
 
 * -o, --output file     The .js file to create
 
-* -t, --type typeName   The type of JavaScript file to generate
+* -t, --type typeName   The type of JavaScript file to generate - "decoded" (default),
+                        "encoded", "fetch"
 
 * -h, --help            Show this Help page
 
@@ -41,7 +42,7 @@ Each type outputs a different variant of JavaScript file
 Creates a JavaScript file with a default export function that can be used anywhere you could use `fetch()`. e.g.
 
 ```javascript
-import fetchSample from 'sample'; // sample.js contains the bundled .wasm
+import fetchSample from 'sample'; // sample.wat.js contains the bundled .wat
 
 WebAssembly.instantiateStreaming(fetchSample)
     .then(obj => obj.instance.exports.exported_func());
@@ -49,12 +50,12 @@ WebAssembly.instantiateStreaming(fetchSample)
 
 #### -type decoded
 
-Creates a JavaScript file with a default export byte array containing the decoded .wasm content
+Creates a JavaScript file with a default export byte array containing the decoded .wat content
 
 **Note:** You'll probably want to use [`WebAssembly.instantiateStreaming()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiateStreaming) in most cases, as it is more efficient than `instantiate()`.
 
 ```javascript
-import decodedSample from 'sample'; // sample.js contains the bundled .wasm
+import decodedSample from 'sample'; // sample.wat.js contains the bundled .wat
 
 WebAssembly.instantiate(decodedSample)
     .then(obj => obj.instance.exports.exported_func());
@@ -62,10 +63,10 @@ WebAssembly.instantiate(decodedSample)
 
 #### -type encoded
 
-Creates a JavaScript file with a default export string value containing the base64 encoded .wasm file
+Creates a JavaScript file with a default export string value containing the base64 encoded .wat file
 
 ```javascript
-import encodedSample from 'sample'; // sample.js contains the bundled .wasm
+import encodedSample from 'sample'; // sample.wat.js contains the bundled .wat
 
 // Decode the base64 string then compile...
 ```

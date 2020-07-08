@@ -1,25 +1,28 @@
 {
-  "name": "js-inline-wasm",
-  "version": "0.0.7",
-  "description": "A tool for bundling a WebAssembly .wasm file into a .js library file with async loading.",
+  "name": "js-inline-wat",
+  "version": "1.0.0",
+  "description": "A tool for bundling a WebAssembly .wat file into a .js library file.",
   "license": "MIT",
-  "homepage": "https://github.com/DevAndyLee/js-inline-wasm",
+  "homepage": "https://github.com/betula/js-inline-wat",
   "bin": {
-    "inlinewasm": "./cli.js"
+    "inlinewat": "./cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DevAndyLee/js-inline-wasm"
+    "url": "https://github.com/betula/js-inline-wat"
   },
   "scripts": {
-    "test": "node cli.js test/sample.wasm -o results/sample.js"
+    "test": "cd test && node ../cli.js logger2.wat && parcel logger2.html"
   },
   "keywords": [
-    "webassembly"
+    "webassembly",
+    "wasm",
+    "wat"
   ],
-  "author": "alee@scottlogic.com",
   "dependencies": {
-    "command-line-args": "^5.1.1",
-    "command-line-usage": "^5.0.5"
+    "command-line-args": "5.1.1",
+    "command-line-usage": "6.1.0",
+    "parcel-bundler": "1.12.4",
+    "wabt": "1.0.17"
   }
 }
